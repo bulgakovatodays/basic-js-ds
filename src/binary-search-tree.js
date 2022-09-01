@@ -8,39 +8,61 @@ const { NotImplementedError } = require('../extensions/index.js');
 */
 class BinarySearchTree {
 
+  constructor() {}
+
   root() {
-    throw new NotImplementedError('Not implemented');
-    // remove line with error and write your code here
+    if (this.lenght === '0') {
+      return 'null';
+    } else {
+      return this;
+    }
   }
 
-  add(/* data */) {
-    throw new NotImplementedError('Not implemented');
-    // remove line with error and write your code here
+  add(num) {
+    console.log(`We add ${num}`);
+    return this.push(num);
   }
 
-  has(/* data */) {
-    throw new NotImplementedError('Not implemented');
-    // remove line with error and write your code here
+  has(num) {
+    console.log(`We check: is 'tree' has ${num} - ${this.includes(num)}`);
+    return this.includes(num);
   }
 
-  find(/* data */) {
-    throw new NotImplementedError('Not implemented');
-    // remove line with error and write your code here
+  find(num) {
+    if (this.includes(num)) {
+      return num;
+    } else {return 'null'};
   }
 
-  remove(/* data */) {
-    throw new NotImplementedError('Not implemented');
-    // remove line with error and write your code here
+  remove(num) {
+   let a = this.indexOf(num);
+   return this.splice(a, 1);
   }
 
   min() {
-    throw new NotImplementedError('Not implemented');
-    // remove line with error and write your code here
-  }
+    let min;
+    if (this.lenght > 0) {
+      min = this[0];
+      for (let i = 0; i < this.lenght; i++) {
+        if (min > this[i]){
+          min = this[i];
+        }
+      }
+    } else { min = 'null'};
+  return min;
+}
 
   max() {
-    throw new NotImplementedError('Not implemented');
-    // remove line with error and write your code here
+    let max;
+    if (this.lenght > 0) {
+      max = this[0];
+      for (let i = 0; i < this.lenght; i++) {
+        if (max < this[i]){
+          max = this[i];
+        }
+      }
+    } else { max = 'null'};
+  return max;
   }
 }
 
