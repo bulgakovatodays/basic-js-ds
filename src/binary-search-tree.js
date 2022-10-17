@@ -1,70 +1,111 @@
 const { NotImplementedError } = require('../extensions/index.js');
 
-// const { Node } = require('../extensions/list-tree.js');
+const { Node } = require('../extensions/list-tree.js');
 
 /**
-* Implement simple binary search tree according to task description
-* using Node from extensions
+ * class Node {
+  constructor(data) {
+    this.data = data;
+    this.left = null;
+    this.right = null;
+  }
+}
+ * 
 */
 class BinarySearchTree {
-
-  constructor() {}
+  constructor() {
+    this.array = null;
+  }
 
   root() {
-    if (this.lenght === '0') {
-      return 'null';
+    if (this.array.lenght === '0') {
+      return null;
     } else {
-      return this;
+      return this.array[0];
     }
+  
   }
 
   add(num) {
-    console.log(`We add ${num}`);
-    return this.push(num);
+    this.array = addLeaf(this.array, num);
+
+    function addLeaf(arr, num){
+      if (arr === null){
+        return new Node(num);
+      } else {
+        if (arr.data === num){
+          return arr;
+        } else {
+          if (arr.data > num) {
+            arr.right = addLeaf(arr.right, num);
+          } else {
+            arr.left = addLeaf(arr.left, num);
+          }
+        }
+      }
+      return arr;
+    }
   }
 
   has(num) {
-    console.log(`We check: is 'tree' has ${num} - ${this.includes(num)}`);
-    return this.includes(num);
+    //throw new NotImplementedError('Not implemented');
+    // remove line with error and write your code here
+  
+    console.log(`We check: is 'tree' has ${num} - ${this.array.includes(num)}`);
+    return this.array.includes(num);
   }
 
   find(num) {
-    if (this.includes(num)) {
+    if (this.array.includes(num)) {
       return num;
-    } else {return 'null'};
+    } else {return null};
+    
   }
 
   remove(num) {
-   let a = this.indexOf(num);
-   return this.splice(a, 1);
+    //throw new NotImplementedError('Not implemented');
+    // remove line with error and write your code here
+    
+   let a = this.array.indexOf(num);
+   return this.array.splice(a, 1);
+   
   }
 
   min() {
-    let min;
-    if (this.lenght > 0) {
-      min = this[0];
-      for (let i = 0; i < this.lenght; i++) {
-        if (min > this[i]){
-          min = this[i];
+    //throw new NotImplementedError('Not implemented');
+    // remove line with error and write your code here
+    
+    if (this.array.lenght > 0) {
+      let min = this.array[0];
+      this.array.forEach(elem => {
+        if (min > elem){
+          min = elem;
         }
-      }
-    } else { min = 'null'};
-  return min;
-}
+      });
+      return min;
+    } else { 
+      return null;
+    }
+    
+  }
 
   max() {
-    let max;
-    if (this.lenght > 0) {
-      max = this[0];
-      for (let i = 0; i < this.lenght; i++) {
-        if (max < this[i]){
-          max = this[i];
+    //throw new NotImplementedError('Not implemented');
+    // remove line with error and write your code here
+    
+    if (this.array.lenght > 0) {
+      let max = this.array[0];
+      this.array.forEach(elem => {
+        if (max < elem){
+          max = elem;
         }
-      }
-    } else { max = 'null'};
-  return max;
-  }
-}
+      });
+      return max;
+    }  else { 
+      return null;
+    }
+    
+}}
 
 module.exports = {
   BinarySearchTree
